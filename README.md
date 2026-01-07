@@ -1,2 +1,2 @@
-# school-oop-exercises
+# School OOP exercises
 OOP school course exercises.
