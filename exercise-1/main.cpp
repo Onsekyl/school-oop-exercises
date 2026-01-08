@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
-#include <time.h>
+#include <ctime>
+#include <limits>
 
 using namespace std;
 
@@ -8,7 +9,7 @@ int game(int maxNum);
 
 int main()
 {
-    int gameResult = game(40);
+    int gameResult = game(20);
     cout << "Oikea vastaus! Arvauksia: " << gameResult << endl;
 
     return 0;
@@ -16,35 +17,41 @@ int main()
 
 int game(int maxNum)
 {
-    int targetNum, guessNum = -1, guessAmount = 0;
+    int targetNum, guessNum = 0, guessAmount = 0;
 
-    srand(time(NULL)); // Unix timestamp for the randomisation's seed
-    targetNum = rand() % maxNum; // '% value' is the upper limit
+    // Unix timestamp for the randomisation seed
+    srand(time(NULL));
+
+    // '% value' is the upper and '+ value' is the lower limit
+    targetNum = rand() % maxNum + 1;
 
     while (guessNum != targetNum)
     {
         guessAmount++;
 
-        cout << "Arvaa luku: ";
-
-        // ?? Should the input accept integer only??
+        cout << "Arvaa kokonaisluku: ";
         cin >> guessNum;
 
-        // https://stackoverflow.com/questions/72315735/how-to-make-cin-only-take-integer-inputs
+        // If the input was invalid (wasn't integer or was over boundaries)
         if (cin.fail())
         {
+            // Clears error flags
             cin.clear();
-            cin.ignore();
+
+            // Drop the rest of the input buffer
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+            cout << "Todella hauskaa. ";
             continue;
         }
 
         if (guessNum < targetNum)
         {
-            cout << "luku on suurempi kuin " << guessNum << endl;
+            cout << "Luku on suurempi kuin " << guessNum << endl;
         }
         else if (guessNum > targetNum)
         {
-            cout << "luku on pienempi kuin " << guessNum << endl;
+            cout << "Luku on pienempi kuin " << guessNum << endl;
         }
 
         cout << endl;
