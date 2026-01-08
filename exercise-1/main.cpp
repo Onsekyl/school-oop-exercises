@@ -8,7 +8,7 @@ int game(int maxNum);
 
 int main()
 {
-    int gameResult = game(20);
+    int gameResult = game(40);
     cout << "Oikea vastaus! Arvauksia: " << gameResult << endl;
 
     return 0;
@@ -29,6 +29,14 @@ int game(int maxNum)
 
         // ?? Should the input accept integer only??
         cin >> guessNum;
+
+        // https://stackoverflow.com/questions/72315735/how-to-make-cin-only-take-integer-inputs
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore();
+            continue;
+        }
 
         if (guessNum < targetNum)
         {
