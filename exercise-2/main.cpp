@@ -1,13 +1,12 @@
-/*
-Katso UML-luokkakaaviot ja Mittari-luentoesimerkki moodlesta.
-*/
-
 #include <iostream>
+#include "game.h"
 
 using namespace std;
 
 int main()
 {
-    cout << "Hello World!" << endl;
+    Game game(50);
+    game.play();
+
     return 0;
 }
