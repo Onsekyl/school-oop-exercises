@@ -1,3 +1,15 @@
+# QT Creator
+# -------------------------------------------------
+
+# User settings
+*/.qtcreator
+
+# Build Directories
+*/build
+
+# C++
+# -------------------------------------------------
+
 # Prerequisites
 *.d
 
