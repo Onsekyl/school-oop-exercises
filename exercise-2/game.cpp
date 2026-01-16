@@ -1,11 +1,11 @@
 #include "game.h"
 
-int randomMaxLimit, targetNum, numOfGuesses = 0;
+int maxNumber, randomNumber, numOfGuesses = 0;
 
 Game::Game(int maxNum)
 {
     cout << "GAME CONSTRUCTOR: Object initialized with a maxNum as " << maxNum << endl;
-    randomMaxLimit = maxNum;
+    maxNumber = maxNum;
 }
 
 Game::~Game()
@@ -17,20 +17,20 @@ void Game::play()
 {
     cout << "GAME: Starting the game" << endl;
 
-    int guessNum = 0;
+    int playerGuess = 0;
 
     // Unix timestamp for the randomisation seed
     srand(time(NULL));
 
     // '% value' is the upper and '+ value' is the lower limit
-    targetNum = rand() % randomMaxLimit + 1;
+    randomNumber = rand() % maxNumber + 1;
 
-    while (guessNum != targetNum)
+    while (playerGuess != randomNumber)
     {
         numOfGuesses++;
 
-        cout << "Guess an integer number between 1 - " << randomMaxLimit << endl;
-        cin >> guessNum;
+        cout << "Guess an integer number between 1 - " << maxNumber << endl;
+        cin >> playerGuess;
 
         // If the input was invalid (wasn't integer or was over boundaries)
         if (cin.fail())
@@ -45,13 +45,13 @@ void Game::play()
             continue;
         }
 
-        if (guessNum < targetNum)
+        if (playerGuess < randomNumber)
         {
-            cout << "Number is larger than " << guessNum << endl;
+            cout << "Number is larger than " << playerGuess << endl;
         }
-        else if (guessNum > targetNum)
+        else if (playerGuess > randomNumber)
         {
-            cout << "Number is smaller than " << guessNum << endl;
+            cout << "Number is smaller than " << playerGuess << endl;
         }
 
         cout << endl;
@@ -63,6 +63,6 @@ void Game::play()
 void Game::printGameResult()
 {
     cout << "GAME: Game has ended" << endl
-    << "Correct! Number was = " << targetNum << endl
+    << "Correct! Number was = " << randomNumber << endl
     << "It took you " << numOfGuesses << " guesses" << endl;
 }
