@@ -1,7 +1,7 @@
 #ifndef CHEF_H
 #define CHEF_H
 
-#include <iostream> // Needed for the string datatype
+#include <iostream>
 
 using namespace std;
 
