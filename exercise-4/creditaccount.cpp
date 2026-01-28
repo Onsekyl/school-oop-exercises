@@ -1,5 +1,8 @@
 #include "creditaccount.h"
+#include "bankaccount.h"
+#include <iostream>
 
+using namespace std;
 
 CreditAccount::CreditAccount(string newOwner, double creditAmount) : BankAccount(newOwner)
 {

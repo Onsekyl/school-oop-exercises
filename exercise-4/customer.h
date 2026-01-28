@@ -1,16 +1,15 @@
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 
-#include <iostream>
+#include "bankaccount.h"
 #include "creditaccount.h"
-
-using namespace std;
+#include <string>
 
 class Customer
 {
 public:
-    Customer(string ownerName, double creditAmount);
-    string getName();
+    Customer(std::string ownerName, double creditAmount);
+    std::string getName();
     void showBalance();
     bool deposit(double);
     bool withdraw(double);
@@ -19,9 +18,9 @@ public:
 
 
 private:
-    string name;
-    BankAccount currentAccount;
-    CreditAccount creditAccount;
+    std::string name;
+    BankAccount *currentAccount;
+    CreditAccount *creditAccount;
 
 };
 
