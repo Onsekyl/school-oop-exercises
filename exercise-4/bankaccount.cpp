@@ -11,7 +11,9 @@ BankAccount::BankAccount(string newOwner)
 
 double BankAccount::getBalance()
 {
-    cout << owner << "'s account's getBalance called. Balance: " << balance << '\n';
+    // This made usage with Customer class confusing.
+    // cout << owner << "'s account's getBalance called. Balance: " << balance << '\n';
+
     return balance;
 }
 
