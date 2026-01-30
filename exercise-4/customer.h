@@ -20,8 +20,8 @@ public:
 
 private:
     std::string name;
-    BankAccount *currentAccount;
-    CreditAccount *creditAccount;
+    BankAccount currentAccount;
+    CreditAccount creditAccount;
 
 };
 
