@@ -4,4 +4,10 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        main.cpp
+        follower.cpp \
+        main.cpp \
+        notificator.cpp
+
+HEADERS += \
+    follower.h \
+    notificator.h
