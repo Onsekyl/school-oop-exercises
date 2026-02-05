@@ -11,11 +11,12 @@ Follower::Follower(string followerName)
 
 string Follower::getName()
 {
-    cout << "Getting the follower's name: " << name << '\n';
+    // I don't think this is necessary, it just makes the prints confusing
+    // cout << "Getting the follower's name: " << name << '\n';
     return name;
 }
 
 void Follower::receivePost(string post)
 {
-    cout << "Follower " << name << " received a post: " << post << '\n';
+    cout << name << " received a post: " << post << '\n';
 }

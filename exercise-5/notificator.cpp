@@ -5,28 +5,67 @@ using namespace std;
 
 Notificator::Notificator()
 {
-    cout << "[NOTIFICATOR CONSTRUCTOR] New notificator"
+    cout << "[NOTIFICATOR CONSTRUCTOR] New notificator\n";
 }
 
 void Notificator::add(Follower* follower)
 {
-    if (followers == nullptr)
-    {
-        cout << "First follower" << '\n';
-    }
+    follower->next = followers;
+    followers = follower;
+    cout << "[NOTIFICATOR] Adding follower: " << followers->getName() << '\n';
 }
 
 void Notificator::remove(Follower* follower)
 {
+    if (followers == follower)
+    {
+        cout << "[NOTIFICATOR] Removing follower: " << followers->getName() << '\n';
+        followers = followers->next;
+        return;
+    }
 
+    Follower* currentFollower = followers;
+
+    while (currentFollower->next != follower)
+    {
+        if (currentFollower->next == nullptr)
+        {
+            cout << "[NOTIFICATOR] " << "Can't remove; no such follower as: " << follower->getName() << '\n';
+            return;
+        }
+
+        currentFollower = currentFollower->next;
+    }
+
+    cout << "[NOTIFICATOR] Removing follower: " << currentFollower->next->getName() << '\n';
+    currentFollower->next = currentFollower->next->next;
 }
 
 void Notificator::print()
 {
+    Follower* currentFollower = followers;
+    int i = 0;
 
+    cout << "\n[NOTIFICATOR] List of followers:\n";
+
+    while (currentFollower != nullptr)
+    {
+        cout << ++i << ". " << currentFollower->getName() << '\n';
+        currentFollower = currentFollower->next;
+    }
+
+    cout << '\n';
 }
 
 void Notificator::post(string post)
 {
+    cout << "[NOTIFICATOR] Posting a message: " << post << '\n';
 
+    Follower* currentFollower = followers;
+
+    while (currentFollower != nullptr)
+    {
+        currentFollower->receivePost(post);
+        currentFollower = currentFollower->next;
+    }
 }
