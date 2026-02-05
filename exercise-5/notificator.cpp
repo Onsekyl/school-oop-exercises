@@ -30,7 +30,7 @@ void Notificator::remove(Follower* follower)
     {
         if (currentFollower->next == nullptr)
         {
-            cout << "[NOTIFICATOR] " << "Can't remove; no such follower as: " << follower->getName() << '\n';
+            cout << "[NOTIFICATOR] " << "Can't remove, no such follower as: " << follower->getName() << '\n';
             return;
         }
 

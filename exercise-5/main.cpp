@@ -1,6 +1,5 @@
 #include "follower.h"
 #include "notificator.h"
-#include <iostream>
 
 using namespace std;
 
@@ -23,6 +22,7 @@ int main()
     notificator.remove(&followerArr[0]);
     notificator.print();
     notificator.remove(&followerArr[4]);
+    notificator.remove(&followerArr[3]);
     notificator.post("Hello? Is this posting thingy working?");
 
     notificator.print();
@@ -32,9 +32,4 @@ int main()
     notificator.post("Why say lot word when few word do trick");
 
     return 0;
-}
-
-void testSetup()
-{
-
 }
