@@ -32,20 +32,19 @@ void Notificator::add(Follower* follower)
 
 void Notificator::remove(Follower* follower)
 {
-    // -- EDGE CASE: Removing follower when no followers
-    if (followers == nullptr)
-    {
-        cout << "[NOTIFICATOR] Can't remove follower: " << follower->getName() << " (no followers)\n";
-        return;
-    }
-    // -- EDGE CASE END
-
-    else if (followers == follower)
+    if (followers == follower)
     {
         cout << "[NOTIFICATOR] Removing follower: " << followers->getName() << '\n';
         followers = followers->next;
         return;
     }
+    // -- EDGE CASE: Removing follower when no followers
+    else if (followers == nullptr)
+    {
+        cout << "[NOTIFICATOR] Can't remove follower: " << follower->getName() << " (no followers)\n";
+        return;
+    }
+    // -- EDGE CASE END
 
     Follower* currentFollower = followers;
 
