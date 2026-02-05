@@ -17,11 +17,16 @@ int main()
         notificator.add(&followerArr[i]);
     }
 
+    // Trying to add a follower that's already following
+    notificator.add(&followerArr[2]);
+
     notificator.print();
     notificator.remove(&followerArr[3]);
     notificator.remove(&followerArr[0]);
     notificator.print();
     notificator.remove(&followerArr[4]);
+
+    // Trying to remove a follower who isn't following
     notificator.remove(&followerArr[3]);
     notificator.post("Hello? Is this posting thingy working?");
 

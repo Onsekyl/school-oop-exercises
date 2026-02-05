@@ -10,6 +10,19 @@ Notificator::Notificator()
 
 void Notificator::add(Follower* follower)
 {
+    Follower* currentFollower = followers;
+
+    while (currentFollower != nullptr)
+    {
+        if (currentFollower == follower)
+        {
+            cout << "[NOTIFICATOR] Can't add follower: " << follower->getName() << " (already following)\n";
+            return;
+        }
+
+        currentFollower = currentFollower->next;
+    }
+
     cout << "[NOTIFICATOR] Adding follower: " << follower->getName() << '\n';
     follower->next = followers;
     followers = follower;
@@ -17,7 +30,12 @@ void Notificator::add(Follower* follower)
 
 void Notificator::remove(Follower* follower)
 {
-    if (followers == follower)
+    if (followers == nullptr)
+    {
+        cout << "[NOTIFICATOR] Nothing to remove, no followers\n";
+        return;
+    }
+    else if (followers == follower)
     {
         cout << "[NOTIFICATOR] Removing follower: " << followers->getName() << '\n';
         followers = followers->next;
@@ -30,7 +48,8 @@ void Notificator::remove(Follower* follower)
     {
         if (currentFollower->next == nullptr)
         {
-            cout << "[NOTIFICATOR] " << "Can't remove, no such follower as: " << follower->getName() << '\n';
+            cout << "[NOTIFICATOR] Can't remove follower: " << follower->getName()
+                 << " (not following)\n";
             return;
         }
 
