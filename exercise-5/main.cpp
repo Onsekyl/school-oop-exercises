@@ -1,3 +1,10 @@
+/*
+Not sure if I should include the handling of edge cases on this branch
+because they weren't really required and would make code more complicated to read
+(I don't know how teachers review the exercises).
+For now I made a separate branch for them: exercise-5-edgecases
+*/
+
 #include "follower.h"
 #include "notificator.h"
 
