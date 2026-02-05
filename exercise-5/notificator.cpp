@@ -10,6 +10,7 @@ Notificator::Notificator()
 
 void Notificator::add(Follower* follower)
 {
+    // -- EDGE CASE: Adding a follower that's already following
     Follower* currentFollower = followers;
 
     while (currentFollower != nullptr)
@@ -22,6 +23,7 @@ void Notificator::add(Follower* follower)
 
         currentFollower = currentFollower->next;
     }
+    // -- EDGE CASE END
 
     cout << "[NOTIFICATOR] Adding follower: " << follower->getName() << '\n';
     follower->next = followers;
@@ -30,11 +32,14 @@ void Notificator::add(Follower* follower)
 
 void Notificator::remove(Follower* follower)
 {
+    // -- EDGE CASE: Removing follower when no followers
     if (followers == nullptr)
     {
         cout << "[NOTIFICATOR] Can't remove follower: " << follower->getName() << " (no followers)\n";
         return;
     }
+    // -- EDGE CASE END
+
     else if (followers == follower)
     {
         cout << "[NOTIFICATOR] Removing follower: " << followers->getName() << '\n';
@@ -46,12 +51,14 @@ void Notificator::remove(Follower* follower)
 
     while (currentFollower->next != follower)
     {
+        // -- EDGE CASE: Removing follower who isn't following
         if (currentFollower->next == nullptr)
         {
             cout << "[NOTIFICATOR] Can't remove follower: " << follower->getName()
                  << " (not following)\n";
             return;
         }
+        // -- EDGE CASE END
 
         currentFollower = currentFollower->next;
     }
