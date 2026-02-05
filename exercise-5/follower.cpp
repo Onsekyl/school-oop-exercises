@@ -5,7 +5,7 @@ using namespace std;
 
 Follower::Follower(string followerName)
 {
-    cout << "[FOLLOWER CONSTRUCTOR] New follower with a name: " << followerName << '\n';
+    cout << "[FOLLOWER CONSTRUCTOR] New follower: " << followerName << '\n';
     name = followerName;
 }
 

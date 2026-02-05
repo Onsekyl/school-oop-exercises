@@ -10,9 +10,9 @@ Notificator::Notificator()
 
 void Notificator::add(Follower* follower)
 {
+    cout << "[NOTIFICATOR] Adding follower: " << follower->getName() << '\n';
     follower->next = followers;
     followers = follower;
-    cout << "[NOTIFICATOR] Adding follower: " << followers->getName() << '\n';
 }
 
 void Notificator::remove(Follower* follower)
