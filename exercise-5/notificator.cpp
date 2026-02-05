@@ -32,7 +32,7 @@ void Notificator::remove(Follower* follower)
 {
     if (followers == nullptr)
     {
-        cout << "[NOTIFICATOR] Nothing to remove, no followers\n";
+        cout << "[NOTIFICATOR] Can't remove follower: " << follower->getName() << " (no followers)\n";
         return;
     }
     else if (followers == follower)

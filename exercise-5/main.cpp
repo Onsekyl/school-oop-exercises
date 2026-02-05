@@ -11,6 +11,9 @@ int main()
     Follower followerArr[] =
     {{"Jeff"}, {"Alysia"}, {"Joni"}, {"Jack"}, {"Kona"}};
 
+    // Trying to remove follower when there isn't any
+    notificator.remove(&followerArr[0]);
+
     // Cast to int to remove warning of 'comparing integers of different signs'
     for (int i = 0; i < int(sizeof(followerArr) / sizeof(followerArr[0])); i++)
     {
