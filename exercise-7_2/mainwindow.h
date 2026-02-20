@@ -17,9 +17,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    int state = 0;
 
 private slots:
-    void buttonHandler();
-    void on_N0_clicked();
+    void numberButtonHandler();
+    void arithmeticButtonHandler();
+    void actionButtonHandler();
 };
 #endif // MAINWINDOW_H

@@ -641,7 +641,7 @@
         </widget>
        </item>
        <item row="0" column="3">
-        <widget class="QPushButton" name="add">
+        <widget class="QPushButton" name="addition">
          <property name="autoFillBackground">
           <bool>true</bool>
          </property>
@@ -693,7 +693,7 @@
         </widget>
        </item>
        <item row="1" column="3">
-        <widget class="QPushButton" name="subtract">
+        <widget class="QPushButton" name="subtraction">
          <property name="autoFillBackground">
           <bool>true</bool>
          </property>
@@ -745,7 +745,7 @@
         </widget>
        </item>
        <item row="2" column="3">
-        <widget class="QPushButton" name="multiply">
+        <widget class="QPushButton" name="multiplication">
          <property name="autoFillBackground">
           <bool>true</bool>
          </property>
@@ -797,7 +797,7 @@
         </widget>
        </item>
        <item row="3" column="3">
-        <widget class="QPushButton" name="divide">
+        <widget class="QPushButton" name="division">
          <property name="autoFillBackground">
           <bool>true</bool>
          </property>
@@ -829,122 +829,10 @@
  <resources/>
  <connections>
   <connection>
-   <sender>N0</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>buttonHandler()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>58</x>
-     <y>262</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>210</x>
-     <y>159</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>N1</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>buttonHandler()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>58</x>
-     <y>187</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>210</x>
-     <y>159</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>N2</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>buttonHandler()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>160</x>
-     <y>187</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>210</x>
-     <y>159</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>N3</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>buttonHandler()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>261</x>
-     <y>187</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>210</x>
-     <y>159</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>N4</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>buttonHandler()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>58</x>
-     <y>212</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>210</x>
-     <y>159</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>N5</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>buttonHandler()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>160</x>
-     <y>212</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>210</x>
-     <y>159</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>N6</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>buttonHandler()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>261</x>
-     <y>212</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>210</x>
-     <y>159</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>N7</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>buttonHandler()</slot>
+   <slot>numberButtonHandler()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>58</x>
@@ -960,7 +848,7 @@
    <sender>N8</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>buttonHandler()</slot>
+   <slot>numberButtonHandler()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>160</x>
@@ -976,7 +864,7 @@
    <sender>N9</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>buttonHandler()</slot>
+   <slot>numberButtonHandler()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>261</x>
@@ -992,7 +880,7 @@
    <sender>clear</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>buttonHandler()</slot>
+   <slot>actionButtonHandler()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>160</x>
@@ -1005,10 +893,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>divide</sender>
+   <sender>division</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>buttonHandler()</slot>
+   <slot>arithmeticButtonHandler()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>363</x>
@@ -1024,7 +912,7 @@
    <sender>enter</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>buttonHandler()</slot>
+   <slot>actionButtonHandler()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>261</x>
@@ -1037,10 +925,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>add</sender>
+   <sender>addition</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>buttonHandler()</slot>
+   <slot>arithmeticButtonHandler()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>363</x>
@@ -1053,10 +941,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>multiply</sender>
+   <sender>multiplication</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>buttonHandler()</slot>
+   <slot>arithmeticButtonHandler()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>363</x>
@@ -1069,10 +957,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>subtract</sender>
+   <sender>subtraction</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>buttonHandler()</slot>
+   <slot>arithmeticButtonHandler()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>363</x>
@@ -1084,8 +972,122 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>N6</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>numberButtonHandler()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>261</x>
+     <y>212</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>210</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>N5</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>numberButtonHandler()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>160</x>
+     <y>212</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>210</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>N4</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>numberButtonHandler()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>58</x>
+     <y>212</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>210</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>N3</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>numberButtonHandler()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>261</x>
+     <y>187</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>210</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>N0</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>numberButtonHandler()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>58</x>
+     <y>262</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>210</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>N1</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>numberButtonHandler()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>58</x>
+     <y>187</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>210</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>N2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>numberButtonHandler()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>160</x>
+     <y>187</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>210</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
-  <slot>buttonHandler()</slot>
+  <slot>numberButtonHandler()</slot>
+  <slot>arithmeticButtonHandler()</slot>
+  <slot>actionButtonHandler()</slot>
  </slots>
 </ui>
