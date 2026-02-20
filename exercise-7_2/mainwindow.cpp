@@ -25,7 +25,7 @@ void MainWindow::numberButtonHandler()
     QString buttonName = button->objectName();
     qDebug() << "[NUMBERBUTTONHANDLER]: " << buttonName << " pressed";
 
-    switch (state)
+    switch (fieldInFocus)
     {
         case 1:
             qDebug() << "Adding " << buttonName.last(1) << " to Number 2 field";
@@ -89,7 +89,7 @@ void MainWindow::arithmeticButtonHandler()
         ui->result->setText(QString::number(num1 * num2));
     }
 
-    state == 0 ? ui->num1->setFocus() : ui->num2->setFocus();
+    fieldInFocus == 0 ? ui->num1->setFocus() : ui->num2->setFocus();
 }
 
 void MainWindow::actionButtonHandler()
@@ -102,15 +102,15 @@ void MainWindow::actionButtonHandler()
     {
         qDebug() << "Focusing the other field";
 
-        switch (state)
+        switch (fieldInFocus)
         {
             case 1:
-                state = 0;
+                fieldInFocus = 0;
                 ui->num1->setFocus();
                 break;
 
             default:
-                state = 1;
+                fieldInFocus = 1;
                 ui->num2->setFocus();
                 break;
         }
@@ -120,7 +120,7 @@ void MainWindow::actionButtonHandler()
         qDebug() << "Clearing the fields and starting over";
         ui->num1->clear();
         ui->num2->clear();
-        state = 0;
+        fieldInFocus = 0;
         ui->num1->setFocus();
     }
 }

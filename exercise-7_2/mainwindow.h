@@ -17,7 +17,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    int state = 0;
+    int fieldInFocus = 0;
 
 private slots:
     void numberButtonHandler();
