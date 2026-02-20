@@ -1,10 +1,11 @@
 /*
- * I made the button connections in forms designer.
- *
+ * Button connections were made via Forms.
+ * You can find them in Signals and Slots Editor -tab
 */
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QRegularExpression>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -29,17 +30,22 @@ void MainWindow::numberButtonHandler()
         case 1:
             qDebug() << "Adding " << buttonName.last(1) << " to Number 2 field";
             ui->num2->insert(buttonName.last(1));
+            ui->num2->setFocus();
             break;
 
         default:
             qDebug() << "Adding " << buttonName.last(1) << " Number 1 field";
             ui->num1->insert(buttonName.last(1));
+            ui->num1->setFocus();
             break;
     }
 }
 
 void MainWindow::arithmeticButtonHandler()
 {
+    // Value outside this range will make .hasMatch() return true
+    static QRegularExpression regex("[^0-9]");
+
     QPushButton* button = qobject_cast<QPushButton*>(sender());
     QString buttonName = button->objectName();
     qDebug() << "[ARITHMETICBUTTONHANDLER]: " << buttonName << " pressed";
@@ -47,15 +53,18 @@ void MainWindow::arithmeticButtonHandler()
     int num1 = ui->num1->text().toInt();
     int num2 = ui->num2->text().toInt();
 
-    // Maybe check that both fields have a value
-    // + that we are not dividing with a 0.
-    // You can disable buttons with ui->buttonName->SetEnable(false);
-    // (and enable with true).
-
     qDebug() << "Performing: " << buttonName;
 
-    // Switch operation doesn't support string data type
-    if (buttonName == "addition")
+    if (ui->num1->text().isEmpty() || ui->num2->text().isEmpty())
+    {
+        ui->result->setText("Missing value");
+    }
+    else if (regex.match(ui->num1->text()).hasMatch() || regex.match(ui->num2->text()).hasMatch())
+    {
+        qDebug() << "Invalid value";
+        ui->result->setText("Invalid value");
+    }
+    else if (buttonName == "addition")
     {
         ui->result->setText(QString::number(num1 + num2));
     }
@@ -65,12 +74,22 @@ void MainWindow::arithmeticButtonHandler()
     }
     else if (buttonName == "division")
     {
-        ui->result->setText(QString::number(num1 / num2));
+        if (num2 != 0)
+        {
+            ui->result->setText(QString::number(num1 / num2));
+        }
+        else
+        {
+            qDebug() << "Trying to divide with 0";
+            ui->result->setText("Invalid divisor");
+        }
     }
     else if (buttonName == "multiplication")
     {
         ui->result->setText(QString::number(num1 * num2));
     }
+
+    state == 0 ? ui->num1->setFocus() : ui->num2->setFocus();
 }
 
 void MainWindow::actionButtonHandler()
@@ -82,7 +101,19 @@ void MainWindow::actionButtonHandler()
     if (buttonName == "enter")
     {
         qDebug() << "Focusing the other field";
-        state == 0 ? state = 1 : state = 0;
+
+        switch (state)
+        {
+            case 1:
+                state = 0;
+                ui->num1->setFocus();
+                break;
+
+            default:
+                state = 1;
+                ui->num2->setFocus();
+                break;
+        }
     }
     else if (buttonName == "clear")
     {
@@ -90,5 +121,6 @@ void MainWindow::actionButtonHandler()
         ui->num1->clear();
         ui->num2->clear();
         state = 0;
+        ui->num1->setFocus();
     }
 }

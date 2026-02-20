@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>422</width>
+    <width>470</width>
     <height>319</height>
    </rect>
   </property>
@@ -554,10 +554,18 @@
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QLineEdit" name="num1"/>
+        <widget class="QLineEdit" name="num1">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="num2"/>
+        <widget class="QLineEdit" name="num2">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
        </item>
        <item row="1" column="2">
         <widget class="QLineEdit" name="result"/>
@@ -819,8 +827,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>422</width>
-     <height>20</height>
+     <width>470</width>
+     <height>24</height>
     </rect>
    </property>
   </widget>
