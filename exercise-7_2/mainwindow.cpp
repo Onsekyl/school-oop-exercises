@@ -48,7 +48,9 @@ void MainWindow::arithmeticButtonHandler()
     int num2 = ui->num2->text().toInt();
 
     // Maybe check that both fields have a value
-    // + that we are not dividing with a 0
+    // + that we are not dividing with a 0.
+    // You can disable buttons with ui->buttonName->SetEnable(false);
+    // (and enable with true).
 
     qDebug() << "Performing: " << buttonName;
 
@@ -89,5 +91,4 @@ void MainWindow::actionButtonHandler()
         ui->num2->clear();
         state = 0;
     }
-
 }
