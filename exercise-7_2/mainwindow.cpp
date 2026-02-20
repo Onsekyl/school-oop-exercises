@@ -13,3 +13,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::buttonHandler()
+{
+    QPushButton* button = qobject_cast<QPushButton*>(sender());
+    QString buttonName = button->objectName();
+    qDebug() << buttonName << " pressed";
+}
