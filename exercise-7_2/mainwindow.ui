@@ -840,7 +840,7 @@
    <extends>QLineEdit</extends>
    <header>customqlineedit.h</header>
    <slots>
-    <signal>wasFocused()</signal>
+    <signal>wasPressed()</signal>
    </slots>
   </customwidget>
  </customwidgets>
@@ -1104,9 +1104,9 @@
   </connection>
   <connection>
    <sender>num1</sender>
-   <signal>wasFocused()</signal>
+   <signal>wasPressed()</signal>
    <receiver>MainWindow</receiver>
-   <slot>lineEditFocusHandler()</slot>
+   <slot>lineEditPressHandler()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>85</x>
@@ -1120,9 +1120,9 @@
   </connection>
   <connection>
    <sender>num2</sender>
-   <signal>wasFocused()</signal>
+   <signal>wasPressed()</signal>
    <receiver>MainWindow</receiver>
-   <slot>lineEditFocusHandler()</slot>
+   <slot>lineEditPressHandler()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>234</x>
@@ -1139,6 +1139,6 @@
   <slot>numberButtonHandler()</slot>
   <slot>arithmeticButtonHandler()</slot>
   <slot>actionButtonHandler()</slot>
-  <slot>lineEditFocusHandler()</slot>
+  <slot>lineEditPressHandler()</slot>
  </slots>
 </ui>

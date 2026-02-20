@@ -1,6 +1,6 @@
 /*
- * Button connections were made via Forms.
- * You can find them in Signals and Slots Editor -tab
+ * Signal/Slot connections were made in the Forms Editor
+ * You can find them in Signals and Slots Editor -tab in the editor
 */
 
 #include "mainwindow.h"
@@ -34,7 +34,7 @@ void MainWindow::numberButtonHandler()
             break;
 
         default:
-            qDebug() << "Adding " << buttonName.last(1) << " Number 1 field";
+            qDebug() << "Adding " << buttonName.last(1) << " to Number 1 field";
             ui->num1->insert(buttonName.last(1));
             ui->num1->setFocus();
             break;
@@ -53,15 +53,14 @@ void MainWindow::arithmeticButtonHandler()
     int num1 = ui->num1->text().toInt();
     int num2 = ui->num2->text().toInt();
 
-    qDebug() << "Performing: " << buttonName;
-
     if (ui->num1->text().isEmpty() || ui->num2->text().isEmpty())
     {
-        ui->result->setText("Missing value");
+        qDebug() << "Atleast one of the fields is empty";
+        ui->result->setText("Empty field");
     }
     else if (regex.match(ui->num1->text()).hasMatch() || regex.match(ui->num2->text()).hasMatch())
     {
-        qDebug() << "Invalid value";
+        qDebug() << "Atleast one of the fields has a non-number character";
         ui->result->setText("Invalid value");
     }
     else if (buttonName == "addition")
@@ -125,7 +124,7 @@ void MainWindow::actionButtonHandler()
     }
 }
 
-void MainWindow::lineEditFocusHandler()
+void MainWindow::lineEditPressHandler()
 {
     CustomQLineEdit* lineEdit = qobject_cast<CustomQLineEdit*>(sender());
     QString lineEditName = lineEdit->objectName();

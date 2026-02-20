@@ -1,7 +1,7 @@
 /*
- * The program ignored switching QLineEdit fields via the mouse click,
- * so I made CustomQLineEdit class for sending a signal to the MainWindow,
- * which then has a handler for changing the fieldInFocus (state) accordingly
+ * The program ignored switching QLineEdit fields via a mouse press,
+ * so I made CustomQLineEdit class that sends a signal for a handler
+ * in MainWindow when that happens.
 */
 
 #ifndef CUSTOMQLINEEDIT_H
@@ -14,13 +14,13 @@ class CustomQLineEdit : public QLineEdit
     Q_OBJECT
 
 signals:
-    void wasFocused();
+    void wasPressed();
 
 public:
     explicit CustomQLineEdit(QWidget *parent = nullptr);
 
 protected:
-    void focusInEvent(QFocusEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
 };
 
 #endif // CUSTOMQLINEEDIT_H

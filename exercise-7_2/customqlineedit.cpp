@@ -7,11 +7,10 @@ CustomQLineEdit::CustomQLineEdit(QWidget *parent)
 
 }
 
-void CustomQLineEdit::focusInEvent(QFocusEvent *event)
-{
-    qDebug() << "Focused manually on " << this->objectName();
-    emit wasFocused();
+void CustomQLineEdit::mousePressEvent(QMouseEvent *event) {
+    qDebug() << "[CUSTOMQLINEEDIT]: Focused manually on " << this->objectName();
+    emit wasPressed();
 
-    // Also do the base functionalities of QLineEdit
-    QLineEdit::focusInEvent(event);
+    // Also do the base functionality of QLineEdit::mousePressEvent()
+    QLineEdit::mousePressEvent(event);
 }
