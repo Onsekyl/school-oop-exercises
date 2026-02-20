@@ -23,5 +23,6 @@ private slots:
     void numberButtonHandler();
     void arithmeticButtonHandler();
     void actionButtonHandler();
+    void lineEditFocusHandler();
 };
 #endif // MAINWINDOW_H

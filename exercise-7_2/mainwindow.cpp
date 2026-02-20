@@ -124,3 +124,20 @@ void MainWindow::actionButtonHandler()
         ui->num1->setFocus();
     }
 }
+
+void MainWindow::lineEditFocusHandler()
+{
+    CustomQLineEdit* lineEdit = qobject_cast<CustomQLineEdit*>(sender());
+    QString lineEditName = lineEdit->objectName();
+    qDebug() << "[LINEEDITFOCUSHANDLER]: " << lineEditName << " focused\n"
+             << "Changing fieldInFocus (aka state) accordingly";
+
+    if (lineEditName == "num1")
+    {
+        fieldInFocus = 0;
+    }
+    else
+    {
+        fieldInFocus = 1;
+    }
+}

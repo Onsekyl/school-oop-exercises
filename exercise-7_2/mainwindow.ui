@@ -554,14 +554,14 @@
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QLineEdit" name="num1">
+        <widget class="CustomQLineEdit" name="num1">
          <property name="text">
           <string/>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="num2">
+        <widget class="CustomQLineEdit" name="num2">
          <property name="text">
           <string/>
          </property>
@@ -834,6 +834,16 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CustomQLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>customqlineedit.h</header>
+   <slots>
+    <signal>wasFocused()</signal>
+   </slots>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
@@ -1092,10 +1102,43 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>num1</sender>
+   <signal>wasFocused()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>lineEditFocusHandler()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>85</x>
+     <y>89</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>234</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>num2</sender>
+   <signal>wasFocused()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>lineEditFocusHandler()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>234</x>
+     <y>89</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>234</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>numberButtonHandler()</slot>
   <slot>arithmeticButtonHandler()</slot>
   <slot>actionButtonHandler()</slot>
+  <slot>lineEditFocusHandler()</slot>
  </slots>
 </ui>
