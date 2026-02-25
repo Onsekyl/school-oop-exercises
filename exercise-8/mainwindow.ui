@@ -570,16 +570,16 @@
         <widget class="QWidget" name="widget" native="true">
          <layout class="QVBoxLayout" name="verticalLayout_6">
           <item>
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="statusLabel">
             <property name="font">
              <font>
-              <family>Consolas</family>
               <pointsize>21</pointsize>
-              <bold>true</bold>
+              <italic>false</italic>
+              <bold>false</bold>
              </font>
             </property>
             <property name="text">
-             <string>Status</string>
+             <string>Select gametime and press 'Start'</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -590,7 +590,7 @@
            <widget class="QWidget" name="widget_2" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <item>
-              <widget class="QPushButton" name="pushButton">
+              <widget class="QPushButton" name="stopButton">
                <property name="minimumSize">
                 <size>
                  <width>80</width>
@@ -622,7 +622,7 @@
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_3">
+              <widget class="QPushButton" name="timeButton_120s">
                <property name="text">
                 <string>120 sec</string>
                </property>
@@ -645,7 +645,7 @@
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_9">
+              <widget class="QPushButton" name="timeButtons_5min">
                <property name="text">
                 <string>5 min</string>
                </property>
@@ -665,7 +665,10 @@
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_2">
+              <widget class="QPushButton" name="startButton">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="minimumSize">
                 <size>
                  <width>80</width>
@@ -696,7 +699,7 @@
            <widget class="QWidget" name="widget_8" native="true">
             <layout class="QVBoxLayout" name="verticalLayout">
              <item>
-              <widget class="QProgressBar" name="progressBar_6">
+              <widget class="QProgressBar" name="progressBar_1">
                <property name="palette">
                 <palette>
                  <active>
@@ -725,7 +728,7 @@
                 </palette>
                </property>
                <property name="value">
-                <number>70</number>
+                <number>0</number>
                </property>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -749,7 +752,10 @@
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_15">
+                 <widget class="QPushButton" name="switchButton_1">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -890,7 +896,7 @@
            <widget class="QWidget" name="widget_10" native="true">
             <layout class="QVBoxLayout" name="verticalLayout_5">
              <item>
-              <widget class="QProgressBar" name="progressBar_9">
+              <widget class="QProgressBar" name="progressBar_2">
                <property name="palette">
                 <palette>
                  <active>
@@ -919,7 +925,7 @@
                 </palette>
                </property>
                <property name="value">
-                <number>70</number>
+                <number>0</number>
                </property>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -946,7 +952,10 @@
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_18">
+                 <widget class="QPushButton" name="switchButton_2">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="minimumSize">
                    <size>
                     <width>80</width>
