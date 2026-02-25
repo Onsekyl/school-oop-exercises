@@ -1,3 +1,13 @@
+/*
+ * I'm not sure if we were meant to utilize actual
+ * threading with this exercise or if it were more
+ * like a demonstration of it? Exercise instructions
+ * doesn't really mention anything about it.
+ *
+ * TODO: If player 1 spends 9.9 seconds and then switches,
+ * after 0.1 seconds the player 2 loses a second from his time.
+ */
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QTimer>
@@ -32,8 +42,24 @@ void MainWindow::timeOut()
 
 void MainWindow::updateProgressBar()
 {
-    ui->progressBar_1->setValue(player1Time / double(gameTime) * 100);
-    ui->progressBar_2->setValue(player2Time / double(gameTime) * 100);
+    short p1Progress = player1Time / double(gameTime) * 100;
+    short p2Progress = player2Time / double(gameTime) * 100;
+
+    ui->progressBar_1->setValue(p1Progress);
+    ui->progressBar_2->setValue(p2Progress);
+
+    if (p1Progress == 0 || p2Progress == 0)
+    {
+        timer->stop();
+        ui->switchButton_1->setEnabled(false);
+        ui->switchButton_2->setEnabled(false);
+
+        QString winString;
+        p1Progress == 0 ? winString = "Player 2 won!"
+                        : winString = "Player 1 won!";
+
+        setStatusLabel(winString + " Press 'Stop' to continue");
+    }
 }
 
 void MainWindow::setStatusLabel(QString input, short fontSize)
@@ -63,7 +89,7 @@ void MainWindow::connectionSetup()
         ui->startButton->setEnabled(false);
 
         currentPlayer = 1;
-        ui->statusLabel->setText("Player 1 turn");
+        setStatusLabel("Player 1 turn");
         timer->start();
     });
 
@@ -76,11 +102,11 @@ void MainWindow::connectionSetup()
         ui->timeButtons_5min->setEnabled(true);
         ui->startButton->setEnabled(false);
         ui->switchButton_1->setEnabled(false);
-        ui->switchButton_1->setEnabled(false);
+        ui->switchButton_2->setEnabled(false);
         ui->progressBar_1->setValue(0);
         ui->progressBar_2->setValue(0);
 
-        ui->statusLabel->setText("Select gametime and press 'Start'");
+        setStatusLabel("Select gametime and press 'Start'");
     });
 
     connect(ui->timeButton_120s, &QPushButton::clicked, this, [this](){
@@ -116,10 +142,10 @@ void MainWindow::connectionSetup()
 
         currentPlayer = 2;
 
-        ui->switchButton_2->setEnabled(true);
         ui->switchButton_1->setEnabled(false);
+        ui->switchButton_2->setEnabled(true);
 
-        ui->statusLabel->setText("Player 2 turn");
+        setStatusLabel("Player 2 turn");
         qDebug() << "Switched to player 2";
     });
 
@@ -131,7 +157,7 @@ void MainWindow::connectionSetup()
         ui->switchButton_1->setEnabled(true);
         ui->switchButton_2->setEnabled(false);
 
-        ui->statusLabel->setText("Player 1 turn");
+        setStatusLabel("Player 1 turn");
         qDebug() << "Switched to player 1";
     });
 }
