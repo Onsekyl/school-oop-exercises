@@ -3,9 +3,6 @@
  * threading with this exercise or if it were more
  * like a demonstration of it? Exercise instructions
  * doesn't really mention anything about it.
- *
- * TODO: If player 1 spends 9.9 seconds and then switches,
- * after 0.1 seconds the player 2 loses a second from his time.
  */
 
 #include "mainwindow.h"
@@ -29,6 +26,7 @@ MainWindow::~MainWindow()
     {
         timer->stop();
         delete timer;
+        qDebug() << "Timer deleted";
     }
 
     delete ui;
@@ -145,6 +143,12 @@ void MainWindow::connectionSetup()
         ui->switchButton_1->setEnabled(false);
         ui->switchButton_2->setEnabled(true);
 
+        // Because timer is already on, this restarts it so the player
+        // gets a whole second instead of the part of a second thats
+        // left from the other player. https://doc.qt.io/qt-6/qtimer.html#start-1
+        // We use int for the countdowns so being precise isn't probably the idea here.
+        this->timer->start();
+
         setStatusLabel("Player 2 turn");
         qDebug() << "Switched to player 2";
     });
@@ -157,6 +161,7 @@ void MainWindow::connectionSetup()
         ui->switchButton_1->setEnabled(true);
         ui->switchButton_2->setEnabled(false);
 
+        this->timer->start();
         setStatusLabel("Player 1 turn");
         qDebug() << "Switched to player 1";
     });
