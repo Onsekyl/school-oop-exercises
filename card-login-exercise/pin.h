@@ -16,17 +16,17 @@ public:
     explicit PIN(QWidget *parent = nullptr);
     ~PIN();
 
-private:
-    Ui::PIN *ui;
-    QTimer *timer = new QTimer(this);
-
 signals:
     void sendPIN(QString);
-    void sendTimeout();
+    void sendTimeOut();
 
 private slots:
     void handleClick();
     void handleTimeout();
+
+private:
+    Ui::PIN *ui;
+    QTimer * pQtimer = new QTimer(this);
 };
 
 #endif // PIN_H

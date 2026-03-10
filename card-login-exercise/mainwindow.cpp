@@ -1,13 +1,14 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    connect(ui->insertCardButton, &QPushButton::clicked, this, &MainWindow::handleClick);
+    connect(ui->pushButton,&QPushButton::clicked,
+            this,&MainWindow::handleClick);
 }
 
 MainWindow::~MainWindow()
@@ -15,65 +16,74 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::handleCard(QString cardNumberSent)
+void MainWindow::handleClick()
 {
-    qDebug() << "Mainwindow handleCard()";
-    cardNumber = cardNumberSent.toInt();
-    ui->currentCard->setText(cardNumberSent);
-
-    if (pPin == nullptr)
+    qDebug()<<"Mainwindow click handler";
+    // luodaan RFID kortin lukija olio
+    if(pCard == nullptr)
     {
-        pPin = new PIN(this);
-        connect(pPin, &PIN::sendPIN, this, &MainWindow::handlePin);
-        connect(pPin, &PIN::sendTimeout, this, &MainWindow::handleTimeOut);
+       pCard = new CARD(this);
+        connect(pCard,&CARD::sendCard,
+               this,&MainWindow::handleCard);
+       this->hide();
+       pCard->show();
 
-        card->hide();
-        pPin->show();
     }
     else
     {
-        card->hide();
-        pPin->show();
+        this->hide();
+        pCard->show();
     }
+    // kytketään sen signaali
+    // laitetaan tämän luokan UI piiloon
+    // avataan RFID kortin lukijan UI
 }
 
-void MainWindow::handlePin(QString pinNumberSent)
+void MainWindow::handleCard(QString s)
 {
-    pin = pinNumberSent.toInt();
-    ui->currentPin->setText(pinNumberSent);
-    // this->hide();
-    // pPin->hide();
+    qDebug()<<"Mainwindow handleCard";
+    // talletetaan s cardNumber muuttujaan
+    cardNumber = s.toUInt();
+    ui->CurrentCard->setText(s);
+    // laiteaan CARD olion käyttöliittymä piiloon
+    //pCard->hide();
+    // luodaan PIN olio ja avataan sen käyttöliittymä
+    if(pPin == nullptr)
+    {
+        pPin = new PIN(this);
+        connect(pPin,&PIN::sendPIN,
+                this,&MainWindow::handlePin);
+        connect(pPin,&PIN::sendTimeOut,
+                this,&MainWindow::handleTimeOut);
+
+        pCard->hide();
+        pPin->show();
+
+    }
+    else
+    {
+        pCard->hide();
+        pPin->show();
+    }
+
+}
+
+void MainWindow::handlePin(QString s)
+{
+    qDebug()<<"Mainwindow handlePin handlerissa";
+    // talletetaan s pinNumber muuttujaan
+    pinNumber = s.toUInt();
+    ui->CurrentPin->setText(s);
+    this->show();
+    //pPin->hide();
     delete pPin;
     pPin = nullptr;
 }
 
 void MainWindow::handleTimeOut()
 {
-    qDebug() << "Mainwindow handleTimeOut()";
+    qDebug()<<"Mainwindow handle Timeout";
     delete pPin;
     pPin = nullptr;
-    card->show();
+    pCard->show();
 }
-
-void MainWindow::handleClick()
-{
-    qDebug() << "Mainwindow handleClick()";
-
-    // Create RFID card reader object
-    if (card == nullptr)
-    {
-        card = new Card(this);
-        connect(card, &Card::sendCard, this, &MainWindow::handleCard);
-        // this->hide();
-        card->show();
-    }
-    else
-    {
-        // this->hide();
-        card->show();
-    }
-    // Connect its signal
-    // Hide this class' UI
-    // Open RFID reader UI
-}
-

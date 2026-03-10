@@ -1,24 +1,27 @@
 #include "card.h"
 #include "ui_card.h"
+#include <QDebug>
 
-Card::Card(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::Card)
+CARD::CARD(QWidget *parent)
+    : QDialog(parent)
+    , ui(new Ui::CARD)
 {
     ui->setupUi(this);
-    connect(ui->readCardButton, &QPushButton::clicked, this, &Card::handleClick);
+    connect(ui->pushButton,&QPushButton::clicked,
+            this,&CARD::handleClick);
+
 }
 
-Card::~Card()
+CARD::~CARD()
 {
     delete ui;
 }
 
-void Card::handleClick()
+void CARD::handleClick()
 {
-    qDebug() << "Card class handleClick()";
-    // Read QString from linedit
-    QString readValue = ui->lineEdit->text();
-    // Send signal with the QString
-    emit sendCard(readValue);
+    qDebug()<<"CARD luokan handle click";
+    // luetaan QString lineEditistä
+    QString luettu = ui->lineEdit->text();
+    // lähetetään QString signaalin mukana
+    emit sendCard(luettu);
 }

@@ -23,10 +23,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(card-login-exercise
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-
         card.h card.cpp card.ui
-
-
         pin.h pin.cpp pin.ui
     )
 # Define target properties for Android with Qt 6 as:

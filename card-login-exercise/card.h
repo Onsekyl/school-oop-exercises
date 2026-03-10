@@ -4,25 +4,26 @@
 #include <QDialog>
 
 namespace Ui {
-class Card;
+class CARD;
 }
 
-class Card : public QDialog
+class CARD : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit Card(QWidget *parent = nullptr);
-    ~Card();
-
-private:
-    Ui::Card *ui;
+    explicit CARD(QWidget *parent = nullptr);
+    ~CARD();
 
 signals:
     void sendCard(QString);
 
 private slots:
     void handleClick();
+
+
+private:
+    Ui::CARD *ui;
 };
 
 #endif // CARD_H
